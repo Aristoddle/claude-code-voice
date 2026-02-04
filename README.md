@@ -18,23 +18,32 @@ Claude Code Voice adds **voice as an extra modality** to Claude Code, enabling:
 ## Quick Start
 
 ```bash
-# Install
-git clone https://github.com/Aristoddle/claude-code-voice
+# 1. Clone repository
+git clone https://github.com/Aristoddle/claude-code-voice.git
 cd claude-code-voice
-./install.sh
 
-# Configure API keys
-export DEEPGRAM_API_KEY="your-key-here"
-export ELEVENLABS_API_KEY="your-key-here"
+# 2. Store API key in 1Password
+op item create \
+  --category=password \
+  --title="ElevenLabs" \
+  --vault="Private" \
+  API_KEY="your-elevenlabs-api-key"
 
-# Enable in Claude Code
-claude skill add ./packages/skill
+# 3. Build MCP server
+cd packages/mcp-server
+npm install
+npm run build
 
-# Use voice
-/speak "Hello from Claude"
-/listen  # Speak your prompt
-/voice-mode  # Toggle conversational mode
+# 4. Test shell functions
+cd ../..
+./test-tts.sh
+
+# 5. Use voice commands
+source ~/.config/zsh/functions/elevenlabs-tts.zsh
+speak "Hello from Claude Code"
 ```
+
+See [Setup Guide](packages/mcp-server/README.md) for MCP server configuration.
 
 ## Features
 
@@ -127,12 +136,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup.
 
 ## Roadmap
 
-### Milestone 1: Foundation (v0.1.0) ✅
-- [x] Repository setup
-- [x] Architecture documentation
-- [x] Basic TTS implementation
-- [x] ElevenLabs MCP server
-- [x] Claude Code skill
+### Milestone 1: Foundation (v0.1.0) ✅ **COMPLETE**
+- [x] Repository setup with security
+- [x] Comprehensive documentation
+- [x] Shell functions (`speak`, `speak-file`, `speak-save`)
+- [x] ElevenLabs MCP server (TypeScript)
+- [x] Claude Code skill definition
+- [x] Cross-platform audio playback (macOS + Linux)
+- [x] 1Password CLI integration
 
 ### Milestone 2: Voice Input (v0.2.0) 🚧
 - [ ] Deepgram STT integration
