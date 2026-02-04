@@ -1,0 +1,49 @@
+# API Keys and Secrets (NEVER COMMIT!)
+.env
+.env.*
+*.key
+*.pem
+*_key
+*_secret
+secrets/
+.secrets/
+
+# Config files with potential secrets
+config.local.json
+**/config.local.*
+.claude/mcp-servers.json
+mcp-servers.json
+
+# Temporary audio files
+*.mp3
+*.wav
+*.ogg
+*.flac
+/tmp/
+/temp/
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+.npm
+
+# Build output
+dist/
+build/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test output
+coverage/
+.nyc_output/
