@@ -17,33 +17,41 @@ Claude Code Voice adds **voice as an extra modality** to Claude Code, enabling:
 
 ## Quick Start
 
-```bash
-# 1. Clone repository
-git clone https://github.com/Aristoddle/claude-code-voice.git
-cd claude-code-voice
+### One-Command Install
 
-# 2. Store API key in 1Password
+```bash
+curl -fsSL https://raw.githubusercontent.com/Aristoddle/claude-code-voice/main/install.sh | bash
+```
+
+This will:
+- Install dependencies and build the MCP server
+- Set up shell functions (`speak`, `speak-file`, `voice-list`)
+- Configure Claude Code skill
+- Create configuration template
+
+After installation:
+
+```bash
+# 1. Get your API key from https://elevenlabs.io/app/settings/api-keys
+
+# 2. Store it securely (1Password recommended)
 op item create \
   --category=password \
   --title="ElevenLabs" \
   --vault="Private" \
   API_KEY="your-elevenlabs-api-key"
 
-# 3. Build MCP server
-cd packages/mcp-server
-npm install
-npm run build
+# OR: Edit config file
+nano ~/.config/elevenlabs/.env
 
-# 4. Test shell functions
-cd ../..
-./test-tts.sh
-
-# 5. Use voice commands
-source ~/.config/zsh/functions/elevenlabs-tts.zsh
+# 3. Reload shell and test
+exec zsh
 speak "Hello from Claude Code"
 ```
 
-See [Setup Guide](packages/mcp-server/README.md) for MCP server configuration.
+### Manual Installation
+
+If you prefer manual installation, see [Setup Guide](docs/guides/setup.md).
 
 ## Features
 
