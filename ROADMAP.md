@@ -1,6 +1,6 @@
 # Roadmap
 
-> **Current Status**: v0.1.0 in development
+> **Current Status**: v0.1.0 ✅ **COMPLETE** (Feb 4, 2026)
 
 ## Vision
 
@@ -10,27 +10,37 @@ Transform Claude Code from a text-only coding assistant into a **multimodal AI p
 
 ## Milestones
 
-### 🎯 Milestone 1: Foundation (v0.1.0) - **Feb 2026**
+### 🎯 Milestone 1: Foundation (v0.1.0) - ✅ **COMPLETE** (Feb 4, 2026)
 
-**Goal**: Basic text-to-speech working end-to-end
+**Goal**: Basic text-to-speech working end-to-end ✅
 
 **Features**:
 - [x] Repository setup with security
 - [x] Comprehensive documentation
-- [ ] Shell functions (`speak`, `speak-file`, `speak-save`)
-- [ ] ElevenLabs MCP server
-- [ ] Claude Code skill definition
-- [ ] Cross-platform audio playback (macOS + Linux)
-- [ ] 1Password CLI integration
+- [x] Shell functions (`speak`, `speak-file`, `speak-save`, `voice-list`)
+- [x] ElevenLabs MCP server (TypeScript + MCP SDK)
+- [x] Claude Code skill definition (YAML frontmatter)
+- [x] Cross-platform audio playback (macOS: afplay, Linux: mpv/ffplay)
+- [x] 1Password CLI integration (with .env fallback)
 
 **Success Criteria**:
-- ✅ Can run `/speak "Hello"` in Claude Code
-- ✅ Audio plays with natural voice (Rachel)
+- ✅ Can run `speak "Hello"` in shell
+- ✅ Audio plays with natural voice (Rachel - 21m00Tcm4TlvDq8ikWAM)
 - ✅ Works on both macOS and Linux
-- ✅ <10 minutes setup time
-- ✅ Zero security issues (no leaked keys)
+- ✅ <10 minutes setup time (via test-tts.sh)
+- ✅ Zero security issues (no leaked keys, pre-commit hooks)
 
-**Estimated Effort**: 2-3 days
+**Implementation**:
+- MCP Server: `packages/mcp-server/` (TypeScript, compiled to JS)
+- Shell Functions: `~/.config/zsh/functions/elevenlabs-tts.zsh`
+- Claude Skill: `~/.claude/skills/elevenlabs-tts/SKILL.md`
+- Test Suite: `test-tts.sh` (validates API, generation, playback)
+
+**Actual Effort**: 3 hours (single session)
+
+**Git Commits**:
+- claude-code-voice: `c8c7d52` - feat(milestone-1): Complete v0.1.0 TTS implementation
+- dotfiles: `45e394c` - feat(voice): Add ElevenLabs TTS integration for Claude Code
 
 ---
 
@@ -82,19 +92,22 @@ Transform Claude Code from a text-only coding assistant into a **multimodal AI p
 
 ## Current Focus
 
-**This Week** (Feb 4-10, 2026):
+**Completed** (Feb 4, 2026):
 - [x] Repository setup
 - [x] Security measures
 - [x] Planning documentation
-- [ ] Implement TTS shell functions
-- [ ] Create ElevenLabs MCP server
-- [ ] Test basic `/speak` command
+- [x] Implement TTS shell functions ✅
+- [x] Create ElevenLabs MCP server ✅
+- [x] Test basic `speak` command ✅
+- [x] Deploy via chezmoi ✅
+- [x] Push to GitHub ✅
 
 **Next Week** (Feb 11-17, 2026):
-- [ ] Polish TTS implementation
-- [ ] Write comprehensive setup guide
-- [ ] Create demo video
-- [ ] Gather early feedback
+- [ ] Begin Milestone 2: Voice Input (STT)
+- [ ] Deepgram MCP server implementation
+- [ ] `/listen` command prototype
+- [ ] Create demo video for v0.1.0
+- [ ] Gather early feedback from testing
 
 ---
 
